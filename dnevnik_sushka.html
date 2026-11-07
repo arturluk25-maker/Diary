@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Дневник">
+<meta name="theme-color" content="#2563eb">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAABlUlEQVR42u3d0Q1EQBRAUUQJWqCxUZbKtEARCkAyZIb3cc7/bjbj5vl4drcd09bAlc4RIA7EgTgQB+JAHIgDcSAOxAHiQByIA3EgDsSBOBAH4kAcIA7EgTgQB+JAHIgDcSAOxAHiQByIA3EgDsSBOBAH4kAciAPEgTgQB+JAHIgDcSAOxIE4QByIA3FQQ1/jTddlePfCad5dkjinZ3IgDsSBOBAH4kAciANxIA7EAeJAHBTwYCv7elvIN/IvUOb+1uRAHIgDcSAOxIE4EAfiQByIA076UJ/G+sbkQByIA3EgDhAH4kAciANxIA7EgTgQB+IAcXAr1sM+ft66ifTEk8mBOBAH4kAciANxIA7EgTgQB5w82K3kLz58H/oX/joUtxXEgTgQB+JAHIgDxIE4EAfiQBxE1I5pcwqYHIgDcSAOxIE4EAfiQByIA8SBOBAH4kAciANxIA7EgThAHIgDcSAOxIE4EAfiQByIA3GAOBAH4kAciANxIA7EgTgQB4gDcSAOxIE4EAfiQByIA3GAOBAH4qC4A68FF+HH2j8dAAAAAElFTkSuQmCC">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAABlUlEQVR42u3d0Q1EQBRAUUQJWqCxUZbKtEARCkAyZIb3cc7/bjbj5vl4drcd09bAlc4RIA7EgTgQB+JAHIgDcSAOxAHiQByIA3EgDsSBOBAH4kAcIA7EgTgQB+JAHIgDcSAOxAHiQByIA3EgDsSBOBAH4kAciAPEgTgQB+JAHIgDcSAOxIE4QByIA3FQQ1/jTddlePfCad5dkjinZ3IgDsSBOBAH4kAciANxIA7EAeJAHBTwYCv7elvIN/IvUOb+1uRAHIgDcSAOxIE4EAfiQByIA076UJ/G+sbkQByIA3EgDhAH4kAciANxIA7EgTgQB+IAcXAr1sM+ft66ifTEk8mBOBAH4kAciANxIA7EgTgQB5w82K3kLz58H/oX/joUtxXEgTgQB+JAHIgDxIE4EAfiQBxE1I5pcwqYHIgDcSAOxIE4EAfiQByIA8SBOBAH4kAciANxIA7EgThAHIgDcSAOxIE4EAfiQByIA3GAOBAH4kAciANxIA7EgTgQB4gDcSAOxIE4EAfiQByIA3GAOBAH4qC4A68FF+HH2j8dAAAAAElFTkSuQmCC">
+<title>Дневник · сушка 5 недель</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--tx:#1b1d21;--mut:#6b7280;--ac:#2563eb;--ln:#e3e5ea;--ok:#16a34a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101215;--card:#1a1d22;--tx:#eceef2;--mut:#9aa1ad;--ac:#5b8cff;--ln:#2a2e36}}
+:root[data-theme="dark"]{--bg:#101215;--card:#1a1d22;--tx:#eceef2;--mut:#9aa1ad;--ac:#5b8cff;--ln:#2a2e36}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.35 -apple-system,system-ui,"Segoe UI",sans-serif;max-width:640px;margin:0 auto;padding:10px 10px 40px}
+.tabs{display:flex;gap:6px;margin:6px 0;overflow-x:auto}
+.tabs button{flex:1;min-width:52px;padding:10px 6px;border:1px solid var(--ln);background:var(--card);color:var(--tx);border-radius:10px;font-size:15px}
+.tabs button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.note{color:var(--mut);font-size:13px;margin:4px 2px 8px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:10px 12px;margin:8px 0}
+.ex{font-weight:600}.rg{color:var(--mut);font-weight:400;font-size:13px}
+.prev{color:var(--mut);font-size:12px;margin:2px 0 6px}
+.row{display:flex;align-items:center;gap:8px;margin:4px 0}
+.row.ss{border-left:3px solid var(--ac);padding-left:5px}.row input{padding:9px 2px}.row span{min-width:18px;color:var(--mut);font-size:13px}
+input{width:100%;min-width:0;padding:9px;font-size:16px;border:1px solid var(--ln);border-radius:8px;background:var(--bg);color:var(--tx);text-align:center}
+.row i{color:var(--mut);font-style:normal}
+.m{display:flex;gap:8px}.m label{flex:1;font-size:13px;color:var(--mut)}
+.nm{text-align:left;font-weight:600;border:0;border-bottom:1px solid var(--ln);border-radius:0;background:transparent;padding:6px 2px}.sm{padding:6px 10px;border:1px solid var(--ln);background:var(--card);color:var(--tx);border-radius:8px;font-size:14px}.sm.red{color:#dc2626}.sm.ac{background:var(--ac);color:#fff;border-color:var(--ac)}.hd{display:flex;justify-content:space-between;align-items:center;gap:8px}.ctl{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;align-items:center}.ctl label{font-size:13px;color:var(--mut);display:flex;align-items:center;gap:4px}.ctl input[type=checkbox]{width:auto}.f{display:flex;gap:8px;margin-top:6px}.f label{flex:1;font-size:12px;color:var(--mut)}select{width:100%;font-size:16px;padding:9px;border:1px solid var(--ln);border-radius:8px;background:var(--bg);color:var(--tx)}.gs{width:auto;font-size:15px;padding:4px 6px;color:var(--ac);font-weight:600}textarea{width:100%;font-size:16px;border:1px solid var(--ln);border-radius:8px;background:var(--bg);color:var(--tx);padding:8px;margin-top:6px}#st{position:fixed;right:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));background:var(--card);border:1px solid var(--ln);border-radius:20px;padding:4px 10px;font-size:12px;color:var(--mut)}
+.sc{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border-bottom:1px solid var(--ln);padding:6px 4px;text-align:center;white-space:nowrap}
+td:first-child,th:first-child{text-align:left;white-space:normal;min-width:130px}
+body.view #app input,body.view #app select,body.view #app textarea{pointer-events:none;opacity:.7}
+</style>
+</head>
+<body>
+<div class="tabs" id="wk"></div>
+<div class="tabs" id="dy"></div>
+<div id="app"></div>
+<div id="st">загрузка…</div>
+<script>
+var D=[
+{n:"Пн · Верх A (дома)",e:[["Жим штанги лёжа",4,"5-8"],["Тяга гантелей, грудью на наклонную скамью",4,"8-10"],["Жим гантелей на наклонной (30°)",3,"8-10"],["Тяга гантели одной рукой с упором",3,"8-10"],["Пуллавер с гантелью",2,"12"],["Бицепс со штангой сидя, спина на опоре",2,"8-10"],["Французский жим лёжа",2,"8-10"]]},
+{n:"Ср · Низ A (дома)",e:[["Ягодичный мост со штангой",4,"8-12"],["Мост на одной ноге",3,"10-12"],["Сгибание ноги с гантелью лёжа",3,"10-15"],["Подъём на носки сидя с гантелью",4,"12-15"],["Мёртвый жук / планка",3,"30-45",1]]},
+{n:"Пт · Верх B (дома)",e:[["Жим гантелей на наклонной (45°, нейтр. хват)",3,"8-12"],["Тяга гантелей с упором грудью",3,"10-12"],["Жим гантелей лёжа",3,"8-12"],["Махи гантелями в стороны",4,"12-20"],["Задние дельты с упором грудью",3,"12-15"],["Сгибания на бицепс на наклонной скамье",3,"10-12"],["Разгибание гантели из-за головы лёжа",3,"10-12"],["Молотки сидя",2,"10-12"]]},
+{n:"Сб · Низ B + блоки (зал)",e:[["Жим ногами",4,"8-12"],["Сгибание ног лёжа",3,"10-12"],["Разгибание ног",3,"12-15"],["Тяга верхнего блока",3,"8-12"],["Тяга сидя на блоке, упор грудью",3,"8-12"],["Сведение рук в кроссовере",2,"12-15"],["Face pull",2,"15"]]}];
+var NOTE=["Вводная: подберите рабочие веса, запас 2-3 повтора.","Те же веса, стремитесь к верху диапазона.","Если везде верх диапазона, добавьте вес.","Удерживайте веса недели 3 или +1 повтор.","РАЗГРУЗКА: на 1 подход меньше, веса −10%."];
+var auto=0,w=0,d=0,tab="plan",ed=false,data={},db=null,ref=null,timer=null,LS="cut5",viewing=null,stash=null;
+D.forEach(function(x,di){x.e.forEach(function(ex,ei){ex[3]=ex[3]||0;ex[4]="d"+di+"_e"+ei})});
+var D0=JSON.stringify(D);
+function $(i){return document.getElementById(i)}
+function h(x){return String(x==null?"":x).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
+function nsets(wk,ex){var o=data["w"+wk+"_"+ex[4]+"_n"];if(o!=null&&o!=="")return +o;var b=+ex[1]||1;return wk==4?Math.max(Math.min(2,b),b-1):b}
+function key(a,id,s,f){return "w"+a+"_"+id+"_s"+s+"_"+f}
+function setSt(t){$("st").textContent=t}
+function flush(){clearTimeout(timer);timer=null;if(ref){ref.set(data).then(function(){setSt("сохранено в аккаунте ✓")},function(){setSt("ошибка синхронизации")})}else{setSt("сохранено только на этом устройстве")}}
+function save(){if(viewing!=null)return;try{localStorage.setItem(LS,JSON.stringify(data))}catch(e){}setSt("сохраняю…");clearTimeout(timer);timer=setTimeout(flush,600)}
+document.addEventListener("visibilitychange",function(){if(document.hidden&&timer)flush()});
+window.addEventListener("pagehide",function(){if(timer)flush()});
+function savePlan(){data["plan"+w]=JSON.stringify(D);save()}
+function planFor(wk){for(var i=wk;i>=0;i--){var p=data["plan"+i];if(p){try{var x=JSON.parse(p);if(x&&x.length)return x}catch(e){}}}
+ if(data.plan){try{var y=JSON.parse(data.plan);if(y&&y.length)return y}catch(e){}}return JSON.parse(D0)}
+function tabs(){
+ var t="";for(var i=0;i<5;i++)t+='<button data-w="'+i+'" class="'+(i==w&&tab=="plan"?"on":"")+'">Нед '+(i+1)+'</button>';
+ t+='<button data-t="prog" class="'+(tab=="prog"?"on":"")+'">📈</button>';$("wk").innerHTML=t;
+ var g="";if(tab=="plan"){D.forEach(function(x,i){g+='<button data-d="'+i+'" class="'+(i==d?"on":"")+'">'+h(x.n.split(/[ ·]/)[0]||"День")+'</button>'});
+  if(ed)g+='<button data-a="ad">＋</button>'}
+ $("dy").innerHTML=g;
+}
+function best(a,ex){
+ var bk=-1,br=0,tm=ex[3];
+ for(var s=0;s<15;s++){var k=parseFloat((data[key(a,ex[4],s,"k")]||"").replace(",",".")),r=parseFloat(data[key(a,ex[4],s,"r")]);
+  if(tm){if(r>br){br=r;bk=0}}else if(!isNaN(k)&&!isNaN(r)&&(k>bk||(k==bk&&r>br))){bk=k;br=r}}
+ if(bk<0)return "";return tm?br+" сек":bk+"×"+br;
+}
+var GR=["Грудь","Спина","Плечи","Бицепс","Трицепс","Квадрицепс","Бицепс бедра","Ягодицы","Икры","Пресс","Другое","Суперсет"];
+function guess(n){n=String(n||"").toLowerCase();
+ if(/жим ногами|разгибание ног|присед|выпад/.test(n))return "Квадрицепс";
+ if(/сгибание ног|сгибание ноги|румын|гиперэкст/.test(n))return "Бицепс бедра";
+ if(/мост|ягодич/.test(n))return "Ягодицы";
+ if(/носк|икр/.test(n))return "Икры";
+ if(/планк|мёртвый жук|мертвый жук|пресс|скручив/.test(n))return "Пресс";
+ if(/задние дельт|face pull|тяга лица|махи|плеч|дельт|арнольд|жим гантелей сидя|над головой/.test(n))return "Плечи";
+ if(/бицепс|молотк/.test(n))return "Бицепс";
+ if(/трицепс|французск|разгибание гантели|разгибание рук|брусь/.test(n))return "Трицепс";
+ if(/тяга|подтягив|пуллавер|шраг/.test(n))return "Спина";
+ if(/жим|грудь|разводк|сведение|отжим|кроссовер/.test(n))return "Грудь";
+ return "Другое"}
+function gopts(ex){return GR.map(function(g){return '<option'+(g==grp(ex)?' selected':'')+'>'+g+'</option>'}).join('')}
+function grp(ex){return ex[5]||guess(ex[0])}
+function isSS(ex){return ex[5]=="Суперсет"}
+function gA(ex){return ex[6]||guess(ex[0])}
+function gB(ex){return ex[8]||guess(ex[7])}
+function gopts2(sel){return GR.filter(function(g){return g!="Суперсет"}).map(function(g){return '<option'+(g==sel?' selected':'')+'>'+g+'</option>'}).join('')}
+function cntSets(wk,ex,sf){var n=0;for(var s=0;s<15;s++){var k=num(data[key(wk,ex[4],s,"k"+sf)]),r=num(data[key(wk,ex[4],s,"r"+sf)]);if(ex[3]&&!sf?r>0:(!isNaN(k)&&!isNaN(r)&&r>0))n++}return n}
+function ssHead(ex,i){if(!isSS(ex))return "";return '<div class="ctl" style="margin:0 0 6px"><span class="rg">А:</span><select class="gs" data-p="ga" data-i="'+i+'">'+gopts2(gA(ex))+'</select></div><div class="ctl" style="margin:0 0 6px;flex-wrap:nowrap"><span class="rg">Б:</span><input class="nm" data-p="n2" data-i="'+i+'" value="'+h(ex[7])+'" placeholder="Второе упражнение"><select class="gs" data-p="gb" data-i="'+i+'">'+gopts2(gB(ex))+'</select></div>'}
+function grpSets(wk,exs){var m={};exs.forEach(function(ex){if(isSS(ex)){var a=cntSets(wk,ex,""),b=cntSets(wk,ex,"2");if(a)m[gA(ex)]=(m[gA(ex)]||0)+a;if(b)m[gB(ex)]=(m[gB(ex)]||0)+b}else{var n=exVol(wk,ex).sets;if(n){var g=grp(ex);m[g]=(m[g]||0)+n}}});return m}
+function grpPlan(wk,exs){var m={};exs.forEach(function(ex){var n=nsets(wk,ex);if(isSS(ex)){m[gA(ex)]=(m[gA(ex)]||0)+n;m[gB(ex)]=(m[gB(ex)]||0)+n}else{var g=grp(ex);m[g]=(m[g]||0)+n}});return m}
+function wkPlan(wk){var m={};planFor(wk).forEach(function(day){var x=grpPlan(wk,day.e);for(var g in x)m[g]=(m[g]||0)+x[g]});return m}
+function grpLines(day){var m=grpSets(w,day.e),p=w>0?grpSets(w-1,day.e):{},o="",q=grpPlan(w,day.e);
+ GR.forEach(function(g){if(m[g]||q[g])o+="<br>"+g+": <b>"+(m[g]||0)+"</b> из "+(q[g]||0)+(w>0&&p[g]?" (прошлая нед.: "+p[g]+")":"")});
+ return o?"<br><b>Подходов по группам (сделано из плана):</b>"+o:""}
+function grpTable(P){var T={};for(var i=0;i<5;i++)P[i].forEach(function(day){var m=grpSets(i,day.e);for(var g in m){T[g]=T[g]||[0,0,0,0,0];T[g][i]+=m[g]}});
+ var o='<div class="note">Подходов по группам мышц за неделю</div><div class="card sc"><table><tr><th></th>';for(var i=1;i<=5;i++)o+='<th>Н'+i+'</th>';o+='</tr>';var any=0;
+ GR.forEach(function(g){if(!T[g])return;any=1;o+='<tr><td>'+g+'</td>';for(var i=0;i<5;i++)o+='<td>'+(T[g][i]||"–")+'</td>';o+='</tr>'});
+ return any?o+'</table></div>':'<div class="note">Подходов по группам: пока нет данных.</div>'}
+function weekGrp(i){var T={};planFor(i).forEach(function(day){var m=grpSets(i,day.e);for(var g in m)T[g]=(T[g]||0)+m[g]});
+ var a=[];GR.forEach(function(g){if(T[g])a.push(g+" "+T[g])});return a.join(", ")}
+function wkG(wk){var T={};planFor(wk).forEach(function(day){var m=grpSets(wk,day.e);for(var g in m)T[g]=(T[g]||0)+m[g]});return T}
+function wkS(wk){var t={v:0,sets:0};planFor(wk).forEach(function(day){var x=dayStat(wk,day.e);t.v+=x.v;t.sets+=x.sets});return t}
+function wkHtml(){var c=wkS(w);if(!c.sets)return "<b>Итого за неделю "+(w+1)+"</b><div class=\"note\">Появится, когда вы внесёте подходы.</div>";
+ var p=w>0?wkS(w-1):null,m=wkG(w),pm=w>0?wkG(w-1):{},q=wkPlan(w),o="<b>Итого за неделю "+(w+1)+"</b><br>Тоннаж: <b>"+fmt(c.v)+" кг</b>"+(p&&p.v>0?pc(c.v,p.v)+" к прошлой неделе":"")+"<br>Подходов: "+c.sets+"<br><b>Подходов по группам:</b>";
+ GR.forEach(function(g){if(m[g]||q[g])o+="<br>"+g+": <b>"+(m[g]||0)+"</b> из "+(q[g]||0)+(w>0&&pm[g]?" (прошлая нед.: "+pm[g]+")":"")});return o}
+function fmt(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g," ")}
+function pc(a,b){if(!b)return "";var p=(a-b)/b*100;return " ("+(p>0?"+":"")+p.toFixed(1).replace(".",",")+"%)"}
+function num(x){return parseFloat(String(x==null?"":x).replace(",","."))}
+function exVol(wk,ex){var v=0,n=0,r0=0,sec=0;for(var s=0;s<15;s++){var k=num(data[key(wk,ex[4],s,"k")]),r=num(data[key(wk,ex[4],s,"r")]);
+ if(ex[3]){if(!isNaN(r)&&r>0){sec+=r;n++}}else if(!isNaN(k)&&!isNaN(r)&&r>0){v+=k*r;n++;r0+=r}
+ if(isSS(ex)){var k2=num(data[key(wk,ex[4],s,"k2")]),r2=num(data[key(wk,ex[4],s,"r2")]);if(!isNaN(k2)&&!isNaN(r2)&&r2>0){v+=k2*r2;n++;r0+=r2}}}
+ return {v:v,sets:n,reps:r0,sec:sec}}
+function dayStat(wk,exs){var t={v:0,sets:0,reps:0};exs.forEach(function(ex){var x=exVol(wk,ex);t.v+=x.v;t.sets+=x.sets;t.reps+=x.reps});return t}
+function tnText(ex){var x=exVol(w,ex);if(!x.sets)return "Тоннаж: –";if(ex[3])return "Всего: "+x.sec+" сек · "+x.sets+" подх.";
+ var p=w>0?exVol(w-1,ex).v:0;return "Тоннаж: "+fmt(x.v)+" кг · "+x.sets+" подх."+(p>0?" · прошлая нед. "+fmt(p)+pc(x.v,p):"")}
+function sumHtml(day){var c=dayStat(w,day.e);if(!c.sets)return "<b>Итого за тренировку</b><div class=\"note\">Внесите подходы, и здесь появится тоннаж.</div>";
+ var p=w>0?dayStat(w-1,day.e):null;
+ return "<b>Итого за тренировку</b><br>Тоннаж: <b>"+fmt(c.v)+" кг</b>"+(p&&p.v>0?pc(c.v,p.v)+" к прошлой неделе ("+fmt(p.v)+")":"")+"<br>Подходов: "+c.sets+" · повторов: "+c.reps+(c.reps?" · средний вес на повтор: "+(c.v/c.reps).toFixed(1).replace(".",",")+" кг":"")+grpLines(day)}
+function upd(){if(tab!="plan"||ed)return;var day=D[d];day.e.forEach(function(ex,ei){var el=$("tn"+ei);if(el)el.innerHTML=tnText(ex)});var s=$("sum");if(s)s.innerHTML=sumHtml(day);var ws=$("wsum");if(ws)ws.innerHTML=wkHtml()}
+function volTable(P){var o='<div class="note">Объём по неделям (тоннаж, кг)</div><div class="card sc"><table><tr><th></th>';for(var i=1;i<=5;i++)o+='<th>Н'+i+'</th>';o+='</tr>';
+ var md=0;P.forEach(function(p){md=Math.max(md,p.length)});var tot=[0,0,0,0,0],st=[0,0,0,0,0],wo=[0,0,0,0,0];
+ for(var di=0;di<md;di++){var nm="";P.forEach(function(p){if(p[di])nm=p[di].n});o+='<tr><td>'+h(nm)+'</td>';
+  for(var i=0;i<5;i++){var x=P[i][di]?dayStat(i,P[i][di].e):{v:0,sets:0};tot[i]+=x.v;st[i]+=x.sets;if(x.sets)wo[i]++;o+='<td>'+(x.sets?fmt(x.v):"–")+'</td>'}o+='</tr>'}
+ o+='<tr><td><b>Всего за неделю</b></td>';for(var i=0;i<5;i++)o+='<td><b>'+(st[i]?fmt(tot[i]):"–")+'</b></td>';o+='</tr>';
+ o+='<tr><td>Изменение к прошлой неделе</td>';for(var i=0;i<5;i++)o+='<td>'+(i>0&&tot[i]&&tot[i-1]?pc(tot[i],tot[i-1]).replace(/[() ]/g,""):"–")+'</td>';o+='</tr>';
+ o+='<tr><td>Подходов</td>';for(var i=0;i<5;i++)o+='<td>'+(st[i]||"–")+'</td>';o+='</tr>';
+ o+='<tr><td>Тренировок</td>';for(var i=0;i<5;i++)o+='<td>'+(wo[i]||"–")+'</td>';o+='</tr>';
+ o+='<tr><td>Тоннаж на тренировку</td>';for(var i=0;i<5;i++)o+='<td>'+(wo[i]?fmt(tot[i]/wo[i]):"–")+'</td>';o+='</tr></table></div>';return o}
+function setsLine(i,ex,sf){sf=sf||"";var a=[],v=0;for(var s=0;s<15;s++){var kk=data[key(i,ex[4],s,"k"+sf)],rr=data[key(i,ex[4],s,"r"+sf)];if(!kk&&!rr)continue;
+ if(ex[3]&&!sf)a.push((rr||"?")+"с");else{a.push((kk||"?")+"×"+(rr||"?"));var k=num(kk),r=num(rr);if(!isNaN(k)&&!isNaN(r))v+=k*r}}
+ return a.length?a.join(", ")+((ex[3]&&!sf)?"":" = "+fmt(v)+" кг"):""}
+function report(){var L=["ДНЕВНИК · ОТЧЁТ ЗА 5 НЕДЕЛЬ",""];
+ for(var i=0;i<5;i++){var pl=planFor(i),wv=0,ws=0;L.push("НЕДЕЛЯ "+(i+1)+": вес "+(data["w"+i+"_bw"]||"–")+" кг, талия "+(data["w"+i+"_wa"]||"–")+" см, шаги "+(data["w"+i+"_st"]||"–"));
+  pl.forEach(function(day){var ds=dayStat(i,day.e);var ex=[];day.e.forEach(function(e){var l=setsLine(i,e);if(l)ex.push("   "+e[0]+(isSS(e)?" (суперсет А)":"")+": "+l);if(isSS(e)){var l2=setsLine(i,e,"2");if(l2)ex.push("   "+(e[7]||"Упражнение Б")+" (суперсет Б): "+l2)}});if(!ex.length)return;wv+=ds.v;ws+=ds.sets;L.push("  "+day.n+": тоннаж "+fmt(ds.v)+" кг, "+ds.sets+" подх.");ex.forEach(function(x){L.push(x)})});
+  L.push("  ИТОГО НЕДЕЛЯ: "+fmt(wv)+" кг, "+ws+" подходов");if(ws)L.push("  Подходов по группам: "+weekGrp(i));L.push("")}
+ return L.join("\n")}
+function csvE(x){x=String(x==null?"":x);return /[;"\n]/.test(x)?'"'+x.replace(/"/g,'""')+'"':x}
+function csv(){var R=["Неделя;День;Упражнение;Группа;Подход;Вес, кг;Повторы;Тоннаж, кг"];
+ function add(i,day,nm,g,ex,sf){for(var s=0;s<15;s++){var kk=data[key(i,ex[4],s,"k"+sf)],rr=data[key(i,ex[4],s,"r"+sf)];if(!kk&&!rr)continue;
+  var k=num(kk),r=num(rr),t=((!ex[3]||sf)&&!isNaN(k)&&!isNaN(r))?String(Math.round(k*r*100)/100).replace(".",","):"";
+  R.push([i+1,day.n,nm,g,s+1,kk||"",rr||"",t].map(csvE).join(";"))}}
+ for(var i=0;i<5;i++)planFor(i).forEach(function(day){day.e.forEach(function(ex){if(isSS(ex)){add(i,day,ex[0]+" (суперсет А)",gA(ex),ex,"");add(i,day,(ex[7]||"Упражнение Б")+" (суперсет Б)",gB(ex),ex,"2")}else add(i,day,ex[0],grp(ex),ex,"")})});
+ R.push("");R.push("Неделя;Вес тела, кг;Талия, см;Шаги");for(var i=0;i<5;i++)R.push([i+1,data["w"+i+"_bw"]||"",data["w"+i+"_wa"]||"",data["w"+i+"_st"]||""].map(csvE).join(";"));
+ return "\ufeff"+R.join("\r\n")}
+function exportCard(){return '<div class="card"><b>Выгрузка 5 недель</b><div class="note">Все подходы, веса, повторы и тоннаж.</div><div class="ctl"><button class="sm ac" data-a="dlc">⬇️ CSV (Excel)</button><button class="sm ac" data-a="dlt">⬇️ Отчёт .txt</button></div><textarea id="rp" readonly rows="4">'+h(report())+'</textarea><div class="ctl"><button class="sm" data-a="cp" data-src="rp">📋 Скопировать отчёт</button></div></div>'}
+function dlFile(name,txt,mime){try{var b=new Blob([txt],{type:mime||"text/plain;charset=utf-8"}),u=URL.createObjectURL(b),a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(u);a.remove()},2000);setSt("файл сохранён")}catch(e){alert("Не удалось скачать файл. Используйте кнопку «Скопировать».")}}
+function plan(){
+ var day=D[d],o='<div class="hd note"><span><b>'+h(day.n)+'</b><br>'+(ed?'Правки только для недели '+(w+1)+'. Следующие недели повторят её, пока вы их не измените.':NOTE[w])+'</span><button class="sm '+(ed?'ac':'')+'" data-a="ed">'+(ed?'Готово':'✏️ Править')+'</button></div>';
+ if(ed)return planEdit(o);
+ o+='<div class="card"><div class="m"><label>Вес тела, кг<input inputmode="decimal" data-k="w'+w+'_bw" value="'+h(data["w"+w+"_bw"])+'"></label><label>Талия, см<input inputmode="decimal" data-k="w'+w+'_wa" value="'+h(data["w"+w+"_wa"])+'"></label><label>Шаги (ср.)<input inputmode="numeric" data-k="w'+w+'_st" value="'+h(data["w"+w+"_st"])+'"></label></div></div>';
+ day.e.forEach(function(ex,ei){
+  var n=nsets(w,ex),t=ex[3],pv="";
+  if(w>0){var b=best(w-1,ex);if(b)pv='<div class="prev">Прошлая неделя: '+b+'</div>'}
+  o+='<div class="card"><input class="nm" data-p="n" data-i="'+ei+'" value="'+h(ex[0])+'" placeholder="Название упражнения"><div class="ctl" style="margin:2px 0 6px"><select class="gs" data-p="g" data-i="'+ei+'">'+gopts(ex)+'</select><span class="rg">'+n+' подх. × '+h(ex[2])+(t?' сек':'')+'</span></div>'+ssHead(ex,ei)+pv;
+  var ss=isSS(ex);
+  if(ss)o+='<div class="prev">В каждом подходе: слева вес × повторы упражнения А, справа Б</div>';
+  for(var s=0;s<n;s++){
+   var kk=key(w,ex[4],s,"k"),rr=key(w,ex[4],s,"r"),pk=w>0?data[key(w-1,ex[4],s,"k")]:"",pr=w>0?data[key(w-1,ex[4],s,"r")]:"";
+   o+='<div class="row"><span>'+(s+1)+'</span>'+(t?'':'<input inputmode="decimal" data-k="'+kk+'" placeholder="'+h(pk||(ss?"кг А":"кг"))+'" value="'+h(data[kk])+'"><i>×</i>')+'<input inputmode="numeric" data-k="'+rr+'" placeholder="'+h(pr||(t?"сек":(ss?"повт А":"повт")))+'" value="'+h(data[rr])+'">';
+   if(ss){var k2=key(w,ex[4],s,"k2"),r2=key(w,ex[4],s,"r2"),pk2=w>0?data[key(w-1,ex[4],s,"k2")]:"",pr2=w>0?data[key(w-1,ex[4],s,"r2")]:"";
+    o+='<b style="color:var(--ac)">+</b><input inputmode="decimal" data-k="'+k2+'" placeholder="'+h(pk2||"кг Б")+'" value="'+h(data[k2])+'"><i>×</i><input inputmode="numeric" data-k="'+r2+'" placeholder="'+h(pr2||"повт Б")+'" value="'+h(data[r2])+'">'}
+   o+='</div>';
+  }
+  o+='<div class="prev" id="tn'+ei+'">'+tnText(ex)+'</div><div class="ctl"><button class="sm ac" data-a="sp" data-id="'+ex[4]+'">＋ Добавить подход</button><button class="sm" data-a="sm" data-id="'+ex[4]+'">− Убрать</button></div></div>';
+ });
+ if(!day.e.length)o+='<div class="note">Пусто. Добавьте первое упражнение.</div>';
+ o+='<div class="ctl"><button class="sm ac" data-a="add">＋ Упражнение</button></div><div class="card" id="sum">'+sumHtml(day)+'</div><div class="card" id="wsum">'+wkHtml()+'</div>';
+ $("app").innerHTML=o;
+}
+function planEdit(o){
+ var day=D[d];
+ o+='<div class="card"><label class="note">Название дня<input data-p="dn" value="'+h(day.n)+'"></label></div>';
+ day.e.forEach(function(ex,i){
+  o+='<div class="card"><input data-p="n" data-i="'+i+'" value="'+h(ex[0])+'" placeholder="Название упражнения"><div class="f"><label>Подходы<input inputmode="numeric" data-p="s" data-i="'+i+'" value="'+h(ex[1])+'"></label><label>Повторы<input data-p="r" data-i="'+i+'" value="'+h(ex[2])+'"></label></div><div class="f"><label>Группа мышц<select data-p="g" data-i="'+i+'">'+GR.map(function(g){return '<option'+(g==grp(ex)?' selected':'')+'>'+g+'</option>'}).join("")+'</select></label></div>'+
+  '<div class="ctl"><label><input type="checkbox" data-p="t" data-i="'+i+'"'+(ex[3]?' checked':'')+'> секунды</label><button class="sm" data-a="up" data-i="'+i+'">▲</button><button class="sm" data-a="dwn" data-i="'+i+'">▼</button><button class="sm red" data-a="del" data-i="'+i+'">Удалить</button></div></div>';
+ });
+ o+='<div class="ctl"><button class="sm ac" data-a="add">＋ Упражнение</button><button class="sm red" data-a="dd">Удалить день</button>'+(w>0&&data["plan"+w]?'<button class="sm" data-a="rs">↺ Как на неделе '+w+'</button>':'')+'</div>';
+ $("app").innerHTML=o;
+}
+function prog(){
+ var o='<div class="note">Лучший подход каждой недели (максимальный вес, затем повторы). Ниже объём, выгрузка и резервная копия.</div><div class="card sc"><table><tr><th></th>';
+ for(var i=1;i<=5;i++)o+='<th>Н'+i+'</th>';o+='</tr>';
+ [["Вес тела","bw"],["Талия","wa"],["Шаги","st"]].forEach(function(m){o+='<tr><td><b>'+m[0]+'</b></td>';for(var i=0;i<5;i++)o+='<td>'+h(data["w"+i+"_"+m[1]]||"–")+'</td>';o+='</tr>'});
+ var G=[],P=[];for(var i=0;i<5;i++)P[i]=planFor(i);
+ P.forEach(function(pl,i){pl.forEach(function(day,di){var g=G[di]=G[di]||{n:day.n,ids:[],nm:{},wk:[{},{},{},{},{}]};g.n=day.n;day.e.forEach(function(ex){if(g.ids.indexOf(ex[4])<0)g.ids.push(ex[4]);g.nm[ex[4]]=ex[0];g.wk[i][ex[4]]=ex})})});
+ G.forEach(function(g){o+='<tr><td colspan="6" style="text-align:left;color:var(--ac);padding-top:12px"><b>'+h(g.n)+'</b></td></tr>';g.ids.forEach(function(id){o+='<tr><td>'+h(g.nm[id])+'</td>';for(var i=0;i<5;i++){var ex=g.wk[i][id];o+='<td>'+((ex&&best(i,ex))||"–")+'</td>'}o+='</tr>'})});
+ $("app").innerHTML=o+'</table></div>'+volTable(P)+grpTable(P)+exportCard()+cyclesCard()+(viewing!=null?'':'<div class="card"><b>Резервная копия</b><div class="note">Данные хранятся только на этом устройстве, облака нет. Скачивайте копию раз в неделю. Последняя копия: '+(data.lastBackup?new Date(data.lastBackup).toLocaleDateString('ru-RU'):'ещё не было')+'.</div><textarea id="bk" readonly rows="3">'+h(JSON.stringify(data))+'</textarea><div class="ctl"><button class="sm ac" data-a="dlj">⬇️ Скачать копию</button><button class="sm" data-a="cp">Скопировать</button></div><textarea id="bkin" rows="3" placeholder="Вставьте резервную копию"></textarea><div class="ctl"><button class="sm" data-a="rst">Восстановить</button></div><div class="ctl"><label>Или из файла: <input type="file" id="bkf" accept=".json,.txt,application/json" style="width:auto;text-align:left"></label></div></div>');
+}
+function draw(){D=planFor(w);if(d>=D.length)d=D.length-1;if(!auto){auto=1;if(!D.some(function(x){return x.e.length}))ed=true}tabs();tab=="plan"?plan():prog();if(viewing!=null){var AA=stash.arch[viewing];$("app").insertAdjacentHTML("afterbegin",'<div class="card" style="border-color:#f59e0b"><b>👁 Архив: '+h(AA.name)+'</b><div class="note">Только просмотр, изменить нельзя.</div><div class="ctl"><button class="sm ac" data-a="vback">← Вернуться к текущему циклу</button></div></div>')}}
+function cyclesCard(){if(viewing!=null)return"";var A=data.arch||[],o='<div class="card"><b>Циклы</b><div class="note">Сейчас: '+h(data.cName||("Цикл "+(A.length+1)))+(data.cStart?" · с "+new Date(data.cStart).toLocaleDateString("ru-RU"):"")+'. Когда 5 недель закончатся, начните новый: этот уйдёт в архив, а программа скопируется на неделю 1.</div><div class="ctl"><button class="sm ac" data-a="newc">＋ Начать новый цикл</button></div>';
+ if(A.length){o+='<div class="note" style="margin-top:8px">Архив (только просмотр):</div>';A.forEach(function(x,i){o+='<div class="ctl"><button class="sm" data-a="vopen" data-i="'+i+'">'+h(x.name)+" · до "+new Date(x.end).toLocaleDateString("ru-RU")+"</button></div>"})}
+ return o+"</div>"}
+function mv(i,j){var e=D[d].e;if(j<0||j>=e.length)return;var x=e[i];e[i]=e[j];e[j]=x}
+document.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var a=b.dataset.a,i=+b.dataset.i,day=D[d];
+ if(viewing!=null&&!(a=="vback"||a=="dlc"||a=="dlt"||a=="cp"||b.dataset.w!=null||b.dataset.d!=null||b.dataset.t))return;
+ if(a=="vopen"){var it=(data.arch||[])[i];if(it){stash=data;data=it.data;viewing=i;w=0;d=0;tab="plan";document.body.classList.add("view")}draw();window.scrollTo(0,0);return}
+ if(a=="vback"){data=stash;stash=null;viewing=null;document.body.classList.remove("view");w=0;d=0;tab="prog";draw();window.scrollTo(0,0);return}
+ if(a=="newc"){var A=(data.arch||[]).slice(),nm=data.cName||("Цикл "+(A.length+1)),nn=prompt("Название нового цикла","Цикл "+(A.length+2));if(nn===null)return;if(!confirm("Закрыть «"+nm+"» и начать новый цикл? Старый останется в архиве, программа скопируется на неделю 1."))return;var old={};for(var k in data)if(k!="arch")old[k]=data[k];A.push({name:nm,end:new Date().toISOString(),data:old});var nd={arch:A,cName:nn||("Цикл "+(A.length+1)),cStart:new Date().toISOString(),plan0:JSON.stringify(planFor(4))};if(data.lastBackup)nd.lastBackup=data.lastBackup;data=nd;w=0;d=0;tab="plan";save();flush();draw();window.scrollTo(0,0);return}
+
+ if(a=="dlj"){data.lastBackup=new Date().toISOString();save();dlFile("dnevnik_kopiya_"+data.lastBackup.slice(0,10)+".json",JSON.stringify(data),"application/json");return}
+ if(a=="dlc"){dlFile("sushka_5nedel.csv",csv());return}
+ if(a=="dlt"){dlFile("sushka_5nedel_otchet.txt",report());return}
+ if(a=="cp"){var t=$(b.dataset.src||"bk");t.select();t.setSelectionRange(0,999999);try{navigator.clipboard.writeText(t.value)}catch(x){}try{document.execCommand("copy")}catch(x){}setSt("скопировано");return}
+ if(a=="rst"){try{var o=JSON.parse($("bkin").value);if(o&&typeof o=="object"&&confirm("Заменить текущие данные копией?")){data=o;save();flush();draw()}}catch(x){alert("Не удалось прочитать копию")}return}
+ if(b.dataset.w!=null){w=+b.dataset.w;tab="plan"}else if(b.dataset.d!=null){d=+b.dataset.d}else if(b.dataset.t){tab="prog"}
+ else if(a=="ed"){ed=!ed}
+ else if(a=="rs"){delete data["plan"+w];save()}
+ else if(a=="add"){day.e.push(["Новое упражнение",3,"8-12",0,"x"+Date.now().toString(36)]);savePlan()}
+ else if(a=="up"){mv(i,i-1);savePlan()}else if(a=="dwn"){mv(i,i+1);savePlan()}
+ else if(a=="del"){if(confirm("Удалить «"+day.e[i][0]+"»? Записанные веса останутся в памяти, но не будут показаны.")){day.e.splice(i,1);savePlan()}}
+ else if(a=="ad"){D.push({n:"Новый день",e:[]});d=D.length-1;savePlan()}
+ else if(a=="dd"){if(D.length<2)alert("Нужен хотя бы один день");else if(confirm("Удалить день «"+day.n+"»?")){D.splice(d,1);d=Math.max(0,d-1);savePlan()}}
+ else if(a=="sp"||a=="sm"){var ex=day.e.filter(function(x){return x[4]==b.dataset.id})[0],n=nsets(w,ex);n=a=="sp"?Math.min(15,n+1):Math.max(1,n-1);data["w"+w+"_"+ex[4]+"_n"]=String(n);save()}
+ draw();if(b.dataset.w!=null||b.dataset.d!=null||b.dataset.t)window.scrollTo(0,0)});
+function onIn(e){if(viewing!=null)return;var t=e.target,k=t.dataset&&t.dataset.k,p=t.dataset&&t.dataset.p;
+ if(k){data[k]=t.value;save();upd();return}
+ if(!p)return;var i=+t.dataset.i,ex=D[d].e[i];
+ if(p=="dn")D[d].n=t.value;else if(p=="n")ex[0]=t.value;else if(p=="s")ex[1]=Math.max(1,Math.min(15,parseInt(t.value)||1));else if(p=="r")ex[2]=t.value;else if(p=="t")ex[3]=t.checked?1:0;else if(p=="g")ex[5]=t.value;else if(p=="ga")ex[6]=t.value;else if(p=="gb")ex[8]=t.value;else if(p=="n2")ex[7]=t.value;
+ savePlan();
+ if(p=="n"&&tab=="plan"&&!ed){var sel=document.querySelector('select[data-i="'+i+'"]');if(sel&&!ex[5])sel.value=grp(ex)}
+ if(p=="g"&&!ed)draw();else if((p=="n"||p=="n2"||p=="ga"||p=="gb")&&!ed)upd()}
+document.addEventListener("input",onIn);document.addEventListener("change",function(e){if(e.target.tagName=="SELECT")onIn(e)});
+document.addEventListener("change",function(e){var t=e.target;if(t.id!=="bkf"||!t.files||!t.files[0])return;var r=new FileReader();r.onload=function(){try{var o=JSON.parse(r.result);if(o&&typeof o=="object"&&confirm("Заменить текущие данные копией из файла?")){data=o;save();flush();draw()}}catch(x){alert("Не удалось прочитать файл")}};r.readAsText(t.files[0])});
+try{var l=localStorage.getItem(LS);if(l)data=JSON.parse(l)||{}}catch(e){}
+draw();
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+setSt("данные хранятся на этом устройстве");
+</script>
+</body>
+</html>
